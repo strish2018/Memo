@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
+
+import com.bignerdranch.android.notes.database.NoteContract;
+import com.bignerdranch.android.notes.database.NoteDBHelper;
 
 public class BootReceiver extends BroadcastReceiver {
 

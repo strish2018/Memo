@@ -1,9 +1,9 @@
-package com.bignerdranch.android.notes;
+package com.bignerdranch.android.notes.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.bignerdranch.android.notes.NoteContract.*;
+import com.bignerdranch.android.notes.database.NoteContract.*;
 
 public class NoteDBHelper extends SQLiteOpenHelper {
 

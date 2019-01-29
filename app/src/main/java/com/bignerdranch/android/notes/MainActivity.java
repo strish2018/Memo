@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,14 +13,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
-import java.util.Random;
+import com.bignerdranch.android.notes.database.NoteContract;
+import com.bignerdranch.android.notes.database.NoteDBHelper;
 
 public class MainActivity extends AppCompatActivity implements MemoDialog.MemoDialogListener{
 
     private SQLiteDatabase mDatabase;
     private NotesAdapter mAdapter;
+    private FloatingActionButton mFabAdd;
 
     private NotificationHelper mNotificationHelper;
 
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements MemoDialog.MemoDi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mFabAdd = findViewById(R.id.fab_add);
 
         NoteDBHelper dbHelper = new NoteDBHelper(this);
         mDatabase = dbHelper.getWritableDatabase();
@@ -58,6 +63,14 @@ public class MainActivity extends AppCompatActivity implements MemoDialog.MemoDi
             }
         }).attachToRecyclerView(recyclerView);
         showNotifications();
+
+        mFabAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addNote();
+            }
+        });
+
     }
 
     @Override

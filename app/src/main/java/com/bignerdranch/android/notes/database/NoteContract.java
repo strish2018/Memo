@@ -1,4 +1,4 @@
-package com.bignerdranch.android.notes;
+package com.bignerdranch.android.notes.database;
 
 import android.provider.BaseColumns;
 
